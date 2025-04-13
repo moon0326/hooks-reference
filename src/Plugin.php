@@ -20,9 +20,6 @@ class Plugin {
 
         // Enqueue admin scripts and styles
         add_action('admin_enqueue_scripts', [$this, 'enqueueAdminAssets']);
-
-        // Register settings
-        add_action('admin_init', [$this, 'registerSettings']);
     }
     
     /**
@@ -75,16 +72,6 @@ class Plugin {
             [$this, 'renderAdminPage'],
             'dashicons-search',
             9999
-        );
-
-        // Add settings submenu
-        add_submenu_page(
-            'hooks-reference',
-            __('Settings', 'hooks-reference'),
-            __('Settings', 'hooks-reference'),
-            'manage_options',
-            'hooks-reference-settings',
-            [$this, 'renderSettingsPage']
         );
     }
     
@@ -145,76 +132,6 @@ class Plugin {
                 return current_user_can('manage_options');
             },
         ]);
-    }
-    
-    /**
-     * Register plugin settings
-     */
-    public function registerSettings() {
-        // Register setting
-        register_setting('hooks_reference_settings', 'hooks_reference_use_cache', [
-            'type' => 'boolean',
-            'default' => true,
-            'sanitize_callback' => 'rest_sanitize_boolean'
-        ]);
-
-        // Add settings section
-        add_settings_section(
-            'hooks_reference_settings_section',
-            __('Hooks reference Settings', 'hooks-reference'),
-            [$this, 'renderSettingsSection'],
-            'hooks-reference-settings'
-        );
-
-        // Add settings field
-        add_settings_field(
-            'hooks_reference_use_cache',
-            __('Use Cache', 'hooks-reference'),
-            [$this, 'renderCacheSetting'],
-            'hooks-reference-settings',
-            'hooks_reference_settings_section'
-        );
-    }
-
-    /**
-     * Render settings section
-     */
-    public function renderSettingsSection() {
-        echo '<p>' . esc_html_e('Configure Hooks reference settings.', 'hooks-reference') . '</p>';
-    }
-
-    /**
-     * Render cache setting field
-     */
-    public function renderCacheSetting() {
-        $use_cache = get_option('hooks_reference_use_cache', true);
-        ?>
-        <label>
-            <input type="checkbox" name="hooks_reference_use_cache" value="1" <?php checked($use_cache); ?> />
-            <?php esc_html_e('Enable caching of hook data', 'hooks-reference'); ?>
-        </label>
-        <p class="description">
-            <?php esc_html_e('When enabled, hook data will be cached for better performance. Disable to always get fresh data.', 'hooks-reference'); ?>
-        </p>
-        <?php
-    }
-    
-    /**
-     * Render settings page
-     */
-    public function renderSettingsPage() {
-        ?>
-        <div class="wrap">
-            <h1><?php echo esc_html(get_admin_page_title()); ?></h1>
-            <form method="post" action="options.php">
-                <?php
-                settings_fields('hooks_reference_settings');
-                do_settings_sections('hooks-reference-settings');
-                submit_button();
-                ?>
-            </form>
-        </div>
-        <?php
     }
     
     /**
