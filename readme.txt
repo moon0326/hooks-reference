@@ -8,7 +8,7 @@ Stable tag: 1.0.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-Hooks Reference is a WordPress plugin that scans all installed plugins to identify where WordPress hooks (add_action, do_action, add_filter, apply_filters) are used. It provides a UI to view and filter these hooks by plugin and hook type.
+Scans all installed plugins to identify where WordPress hooks (add_action, do_action, add_filter, apply_filters) are used.
 
 === Screenshots ==
 
