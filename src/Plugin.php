@@ -44,12 +44,13 @@ class Plugin {
         );
 
         // Enqueue the built styles
-        wp_enqueue_style(
+        wp_register_style(
             'hooks-reference-style',
-            HOOKS_REFERENCE_PLUGIN_URL . 'build/hooks-reference.css',
+            false,
             ['wp-components'],
             HOOKS_REFERENCE_VERSION
         );
+        wp_enqueue_style('hooks-reference-style');
 
         // Localize script with plugin data
         wp_localize_script(
@@ -269,13 +270,20 @@ class Plugin {
         
         return rest_ensure_response(array_values($hooks));
     }
+
+	protected function get_plugins() {
+		if ( ! function_exists( 'get_plugins' ) ) {
+			require_once ABSPATH . 'wp-admin/includes/plugin.php';
+		}
+		return \get_plugins();
+	}
     
     /**
      * Get list of active plugins
      */
     public function getPlugins() {
         $plugins = array();
-        $all_plugins = get_plugins();
+        $all_plugins = $this->get_plugins();
         
         // Debug output
         error_log('All plugins found: ' . print_r($all_plugins, true));
@@ -321,7 +329,7 @@ class Plugin {
      */
     private function scanPlugins() {
         $hooks = [];
-        $plugins = get_plugins();
+        $plugins = $this->get_plugins();
         
         foreach ($plugins as $plugin_file => $plugin_data) {
             $plugin_dir = WP_PLUGIN_DIR . '/' . dirname($plugin_file);

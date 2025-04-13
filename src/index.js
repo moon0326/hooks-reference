@@ -48,7 +48,6 @@ const HooksReference = () => {
         if (plugin) setSelectedPlugin(plugin);
         if (functionName) setSelectedFunction(functionName);
         if (search) setSearchTerm(search);
-console.log(nonce);
 
         // Check cache setting
         fetch(`${restUrl}/settings`, {
