@@ -68,7 +68,7 @@ class Plugin {
      */
     public function registerAdminMenu() {
         add_menu_page(
-            __('', 'hooks-reference'),
+            __('&nbsp;', 'hooks-reference'),
             __('Hooks Reference', 'hooks-reference'),
             'manage_options',
             'hooks-reference',
@@ -180,7 +180,7 @@ class Plugin {
      * Render settings section
      */
     public function renderSettingsSection() {
-        echo '<p>' . __('Configure Hooks reference settings.', 'hooks-reference') . '</p>';
+        echo '<p>' . esc_html_e('Configure Hooks reference settings.', 'hooks-reference') . '</p>';
     }
 
     /**
@@ -191,10 +191,10 @@ class Plugin {
         ?>
         <label>
             <input type="checkbox" name="hooks_reference_use_cache" value="1" <?php checked($use_cache); ?> />
-            <?php _e('Enable caching of hook data', 'hooks-reference'); ?>
+            <?php esc_html_e('Enable caching of hook data', 'hooks-reference'); ?>
         </label>
         <p class="description">
-            <?php _e('When enabled, hook data will be cached for better performance. Disable to always get fresh data.', 'hooks-reference'); ?>
+            <?php esc_html_e('When enabled, hook data will be cached for better performance. Disable to always get fresh data.', 'hooks-reference'); ?>
         </p>
         <?php
     }
@@ -285,20 +285,14 @@ class Plugin {
         $plugins = array();
         $all_plugins = $this->get_plugins();
         
-        // Debug output
-        error_log('All plugins found: ' . print_r($all_plugins, true));
-        
         foreach ($all_plugins as $plugin_file => $plugin_data) {
             $is_active = is_plugin_active($plugin_file);
-            error_log("Plugin {$plugin_data['Name']} ({$plugin_file}) is " . ($is_active ? 'active' : 'inactive'));
             
             $plugins[] = [
                 'name' => $plugin_data['Name'],
                 'active' => $is_active
             ];
         }
-        
-        error_log('Final plugins array: ' . print_r($plugins, true));
         
         return rest_ensure_response($plugins);
     }

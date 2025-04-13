@@ -5,8 +5,8 @@ Requires at least: 5.8
 Tested up to: 6.7.2
 Requires PHP: 7.1
 Stable tag: 1.0.0
-License: GPLv3
-License URI: https://www.gnu.org/licenses/gpl-3.0.html
+License: GPLv2
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 Scans all installed plugins to identify where WordPress hooks (add_action, do_action, add_filter, apply_filters) are used.
 
