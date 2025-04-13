@@ -1,0 +1,29 @@
+{
+    "name": "wp-hooks-discovery",
+    "version": "1.0.0",
+    "description": "A WordPress admin plugin that scans all installed plugins to discover where WordPress hooks are used.",
+    "scripts": {
+        "build": "wp-scripts build",
+        "start": "wp-scripts start",
+        "packages-update": "wp-scripts packages-update"
+    },
+    "dependencies": {
+        "@wordpress/components": "^25.0.0",
+        "@wordpress/data": "^9.0.0",
+        "@wordpress/element": "^5.0.0",
+        "@wordpress/i18n": "^4.0.0"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.23.9",
+        "@babel/preset-env": "^7.23.9",
+        "@babel/preset-react": "^7.23.3",
+        "@wordpress/scripts": "^26.19.0",
+        "babel-loader": "^8.3.0",
+        "css-loader": "^6.10.0",
+        "sass": "^1.71.1",
+        "sass-loader": "^13.3.2",
+        "style-loader": "^3.3.4",
+        "webpack": "^5.89.0",
+        "webpack-cli": "^5.1.4"
+    }
+}

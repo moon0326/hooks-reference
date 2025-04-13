@@ -1,0 +1,73 @@
+.hooks-reference {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  &__header {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__filters {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+
+  &__search {
+    flex: 1;
+    min-width: 200px;
+  }
+
+  &__select {
+    min-width: 200px;
+  }
+
+  &__results {
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+
+  &__hook {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &-name {
+      font-weight: 600;
+      color: #1e1e1e;
+      margin-bottom: 5px;
+    }
+
+    &-details {
+      color: #666;
+      font-size: 0.9em;
+    }
+
+    &-file {
+      font-family: monospace;
+      background: #f0f0f0;
+      padding: 2px 4px;
+      border-radius: 3px;
+    }
+  }
+
+  &__no-results {
+    padding: 20px;
+    text-align: center;
+    color: #666;
+  }
+
+  &__cache-status {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 10px;
+  }
+} 

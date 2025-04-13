@@ -1,0 +1,21 @@
+{
+    "name": "moon0326/wp-hooks-reference",
+    "description": "A WordPress admin plugin that scans all installed plugins to discover where WordPress hooks are used.",
+    "type": "wordpress-plugin",
+    "license": "GPL-2.0-or-later",
+    "require": {
+        "php": ">=7.4",
+        "nikic/php-parser": "^4.15",
+        "composer/installers": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "HooksReference\\": "src/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true
+        }
+    }
+} 
