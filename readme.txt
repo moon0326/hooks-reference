@@ -2,7 +2,7 @@
 Contributors: moon0326
 Tags: hooks, action, filter
 Requires at least: 5.8
-Tested up to: 6.7
+Tested up to: 6.8
 Requires PHP: 7.1
 Stable tag: 1.0.0
 License: GPLv2
