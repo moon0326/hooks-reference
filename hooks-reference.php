@@ -9,7 +9,7 @@
  * 
  * Plugin Name: Hooks Reference
  * Plugin URI: https://github.com/moon0326/wp-hooks-reference
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: Moon K
  * Author URI: https://github.com/moon0326
  * Requires PHP: 7.1
@@ -25,7 +25,7 @@ if (!defined('WPINC')) {
 }
 
 // Define plugin constants
-define('HOOKS_REFERENCE_VERSION', '1.0.0');
+define('HOOKS_REFERENCE_VERSION', '1.0.1');
 define('HOOKS_REFERENCE_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('HOOKS_REFERENCE_PLUGIN_URL', plugin_dir_url(__FILE__));
 
